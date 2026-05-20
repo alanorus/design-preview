@@ -106,6 +106,43 @@
   footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:40px 0;text-align:center;font-size:13px}
   footer b{color:#fff;font-family:var(--display);font-size:18px;letter-spacing:4px;font-weight:500}
   .note{background:var(--muted-2);border:1px solid var(--border);border-radius:3px;padding:16px 20px;font-size:13px;color:var(--body);margin-top:24px}
+
+  @media(max-width:768px){
+    .wrap{padding:0 18px}
+    header{padding:14px 0}
+    header .wrap{flex-direction:column;gap:6px;text-align:center}
+    .logo{font-size:21px;letter-spacing:4px}
+    header nav span{margin-left:0;font-size:11px;letter-spacing:1px}
+    .hero{padding:52px 0}
+    .hero h1{font-size:34px;letter-spacing:2px}
+    .hero p{font-size:15px}
+    .hero .eyebrow{font-size:12px}
+    section{padding:42px 0}
+    section h2{font-size:27px}
+    section .sub{font-size:14px;margin-bottom:26px}
+    .display-xl{font-size:33px;letter-spacing:1px}
+    .display-l{font-size:27px}
+    .h-2{font-size:25px}
+    .h-3{font-size:21px}
+    .body-lg{font-size:16px}
+    .btns{gap:12px}
+    .btn-gold,.btn-gold-solid,.btn-navy{padding:12px 22px;font-size:12px}
+    .principles{gap:14px}
+    .pr{padding:18px}
+    .pr h4{font-size:19px}
+    .tree{font-size:14px;line-height:1.65}
+    .tree ul{padding-left:14px}
+    .tree li{margin-bottom:5px}
+    .tree .tag{display:inline-block;margin-top:2px}
+  }
+  @media(max-width:420px){
+    .hero h1{font-size:27px}
+    .hero{padding:42px 0}
+    section h2{font-size:23px}
+    .display-xl{font-size:26px}
+    .display-l{font-size:24px}
+    .swatches{grid-template-columns:repeat(2,1fr)}
+  }
 </style>
 </head>
 <body>
