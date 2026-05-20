@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>YACHTLINE — Дизайн-система обновлённого сайта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#232837; --navy-2:#262b39; --navy-dark:#030b1b;
+    --gold:#b79669; --gold-hover:#ae8954; --gold-soft:#b29e73;
+    --bg:#ffffff; --muted:#f5f5f5; --muted-2:#fafafa;
+    --fg:#333333; --body:#777777; --strong:#222222;
+    --border:#ececec; --divider:#f0f0f0;
+    --shadow-card:0 0 15px rgb(0 0 0 / .12);
+    --shadow-fixed:0 4px 14px 0 rgb(32 54 74 / .23);
+    --sans:'Montserrat',system-ui,sans-serif;
+    --display:'Cormorant',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6;font-size:16px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,h4{font-family:var(--display);color:var(--navy);font-weight:500;line-height:1.15}
+  .eyebrow{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+
+  /* header */
+  header{background:var(--navy);color:#fff;padding:18px 0;position:sticky;top:0;z-index:10;box-shadow:var(--shadow-fixed)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--display);font-size:26px;font-weight:600;letter-spacing:6px;color:#fff}
+  header nav span{font-family:var(--sans);font-size:13px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-left:24px}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;padding:90px 0;text-align:center}
+  .hero h1{color:#fff;font-size:58px;font-weight:500;letter-spacing:4px;text-transform:uppercase}
+  .hero p{color:rgba(255,255,255,.75);max-width:620px;margin:18px auto 0;font-size:17px}
+  .hero .eyebrow{margin-bottom:18px;display:block}
+
+  section{padding:64px 0;border-bottom:1px solid var(--divider)}
+  section h2{font-size:38px;margin-bottom:8px}
+  section .sub{color:var(--body);margin-bottom:36px;font-size:15px}
+
+  /* palette */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+  .sw{border:1px solid var(--border);border-radius:3px;overflow:hidden}
+  .sw .chip{height:96px}
+  .sw .meta{padding:10px 12px;font-size:13px}
+  .sw .meta b{display:block;font-weight:600;color:var(--strong)}
+  .sw .meta code{color:var(--body);font-size:12px}
+
+  /* type */
+  .type-row{padding:16px 0;border-bottom:1px solid var(--divider)}
+  .type-row:last-child{border:0}
+  .type-row .label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+  .display-xl{font-family:var(--display);font-size:57px;font-weight:500;color:var(--navy);letter-spacing:2px}
+  .display-l{font-family:var(--display);font-size:42px;font-weight:500;color:var(--navy)}
+  .h-2{font-family:var(--display);font-size:35px;font-weight:500;color:var(--navy)}
+  .h-3{font-family:var(--display);font-size:29px;font-weight:500;color:var(--navy)}
+  .body-lg{font-size:18px;color:var(--fg)}
+  .body-base{font-size:16px;color:var(--body)}
+
+  /* buttons */
+  .btns{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn-gold{display:inline-block;border:1px solid var(--gold);color:var(--gold);background:transparent;
+    padding:14px 34px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+    text-decoration:none;border-radius:3px;cursor:pointer;transition:all .35s ease-in-out}
+  .btn-gold:hover{background:var(--gold);color:#fff}
+  .btn-gold-solid{display:inline-block;background:var(--gold);color:#fff;border:1px solid var(--gold);
+    padding:14px 34px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+    text-decoration:none;border-radius:3px;cursor:pointer;transition:all .35s ease-in-out}
+  .btn-gold-solid:hover{background:var(--gold-hover);border-color:var(--gold-hover)}
+  .btn-navy{display:inline-block;background:var(--navy);color:#fff;border:1px solid var(--navy);
+    padding:14px 34px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+    text-decoration:none;border-radius:3px;cursor:pointer;transition:all .3s}
+  .btn-navy:hover{background:var(--navy-2)}
+
+  /* product card mock */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+  .card{border:1px solid var(--border);border-radius:3px;overflow:hidden;background:#fff;transition:box-shadow .3s}
+  .card:hover{box-shadow:var(--shadow-card)}
+  .card .ph{height:200px;background:linear-gradient(135deg,#eceae6,#f5f3ef);display:flex;align-items:center;justify-content:center;color:#c3bcae;font-family:var(--display);font-size:20px}
+  .card .body{padding:18px}
+  .card .coll{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .card .name{font-family:var(--display);font-size:22px;color:var(--navy);margin:4px 0 2px}
+  .card .art{font-size:12px;color:var(--body)}
+  .card .cta{margin-top:14px}
+
+  /* principles */
+  .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .pr{padding:24px;background:var(--muted);border-radius:3px;border-left:3px solid var(--gold)}
+  .pr h4{font-size:21px;margin-bottom:8px}
+  .pr p{font-size:14px;color:var(--body)}
+
+  /* sitemap */
+  .tree{font-family:var(--sans);font-size:15px;line-height:2}
+  .tree ul{list-style:none;padding-left:26px;border-left:1px solid var(--border)}
+  .tree>ul{padding-left:0;border:0}
+  .tree li{position:relative}
+  .tree .node{color:var(--navy);font-weight:600}
+  .tree .leaf{color:var(--body);font-weight:400}
+  .tree .tag{display:inline-block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;background:var(--gold);color:#fff;padding:1px 7px;border-radius:2px;margin-left:8px;vertical-align:middle}
+  .tree .tag.lead{background:var(--navy)}
+
+  footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:40px 0;text-align:center;font-size:13px}
+  footer b{color:#fff;font-family:var(--display);font-size:18px;letter-spacing:4px;font-weight:500}
+  .note{background:var(--muted-2);border:1px solid var(--border);border-radius:3px;padding:16px 20px;font-size:13px;color:var(--body);margin-top:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">YACHTLINE</div>
+    <nav><span>Дизайн-система</span><span>v0.1 · черновик</span></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Премиальная дизайнерская мебель · с 2007</span>
+    <h1>Дизайн-система</h1>
+    <p>Единый визуальный язык обновлённого сайта: фирменная палитра, типографика, компоненты интерфейса и структура разделов. Основа для вёрстки всех страниц.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">01 — Палитра</span>
+    <h2>Фирменные цвета</h2>
+    <p class="sub">Тёмно-синий «морской» — основа бренда (логотип, заголовки). Золото — акцент: кнопки, цены, иконки. Светлые нейтрали — фон и текст.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#232837"></div><div class="meta"><b>Navy / основной</b><code>#232837</code></div></div>
+      <div class="sw"><div class="chip" style="background:#030b1b"></div><div class="meta"><b>Navy тёмный</b><code>#030b1b</code></div></div>
+      <div class="sw"><div class="chip" style="background:#b79669"></div><div class="meta"><b>Gold / акцент</b><code>#b79669</code></div></div>
+      <div class="sw"><div class="chip" style="background:#ae8954"></div><div class="meta"><b>Gold hover</b><code>#ae8954</code></div></div>
+      <div class="sw"><div class="chip" style="background:#f5f5f5;border-bottom:1px solid #ececec"></div><div class="meta"><b>Фон-приглушённый</b><code>#f5f5f5</code></div></div>
+      <div class="sw"><div class="chip" style="background:#333333"></div><div class="meta"><b>Текст-заголовки</b><code>#333333</code></div></div>
+      <div class="sw"><div class="chip" style="background:#777777"></div><div class="meta"><b>Текст-body</b><code>#777777</code></div></div>
+      <div class="sw"><div class="chip" style="background:#ffffff;border-bottom:1px solid #ececec"></div><div class="meta"><b>Белый / фон</b><code>#ffffff</code></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">02 — Типографика</span>
+    <h2>Шрифтовая пара</h2>
+    <p class="sub">Cormorant (с засечками) — заголовки и акценты, premium-характер. Montserrat (без засечек) — основной текст, навигация, кнопки. Поддержка кириллицы.</p>
+    <div class="type-row"><div class="label">Cormorant · Hero / H1</div><div class="display-xl">Премиальная мебель</div></div>
+    <div class="type-row"><div class="label">Cormorant · H2</div><div class="display-l">Коллекция REEF</div></div>
+    <div class="type-row"><div class="label">Cormorant · H3</div><div class="h-3">Диван трёхместный</div></div>
+    <div class="type-row"><div class="label">Montserrat · Body large</div><div class="body-lg">Мебель ручной работы из натуральных материалов для дома, террасы и яхты.</div></div>
+    <div class="type-row"><div class="label">Montserrat · Body</div><div class="body-base">Каждое изделие создаётся под заказ с вниманием к деталям. Собственное производство в России с 2007 года.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">03 — Кнопки</span>
+    <h2>Элементы действия</h2>
+    <p class="sub">Золотая «обводка» с заливкой при наведении — главный стиль призыва. Тёмная — вторичный. На премиум-сайте цены скрыты — основной CTA «Уточнить наличие».</p>
+    <div class="btns">
+      <a class="btn-gold">Уточнить наличие</a>
+      <a class="btn-gold-solid">Заказать звонок</a>
+      <a class="btn-navy">В подборку</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">04 — Карточка товара</span>
+    <h2>Каталог</h2>
+    <p class="sub">Чистая премиум-карточка: коллекция, название, артикул, призыв вместо ценника. Наведение — мягкая тень.</p>
+    <div class="cards">
+      <div class="card"><div class="ph">REEF</div><div class="body"><div class="coll">Коллекция REEF</div><div class="name">Диван Reef</div><div class="art">арт. RF.01.03</div><div class="cta"><a class="btn-gold" style="padding:10px 22px;font-size:11px">Уточнить</a></div></div></div>
+      <div class="card"><div class="ph">BRIZ</div><div class="body"><div class="coll">Коллекция BRIZ</div><div class="name">Кресло Briz</div><div class="art">арт. BR.04.11</div><div class="cta"><a class="btn-gold" style="padding:10px 22px;font-size:11px">Уточнить</a></div></div></div>
+      <div class="card"><div class="ph">GRID</div><div class="body"><div class="coll">Коллекция GRID</div><div class="name">Стол Grid</div><div class="art">арт. GR.02.07</div><div class="cta"><a class="btn-gold" style="padding:10px 22px;font-size:11px">Уточнить</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">05 — Принципы интерфейса</span>
+    <h2>Как сайт работает на продажи</h2>
+    <p class="sub">Сайт — премиум-витрина с заявками (не интернет-магазин). Каждое решение направлено на получение обращения.</p>
+    <div class="principles">
+      <div class="pr"><h4>Контакты всегда видны</h4><p>Закреплённая шапка: телефон, часы, мессенджеры, кнопка звонка. Клиент связывается в один клик с любой страницы.</p></div>
+      <div class="pr"><h4>«В подборку»</h4><p>Клиент собирает интересующие модели и отправляет менеджеру одним списком — готовый запрос вместо разрозненных вопросов.</p></div>
+      <div class="pr"><h4>Цены по запросу</h4><p>Премиум-модель: вместо ценника — «Уточнить наличие». Каждое касание ведёт к диалогу с менеджером.</p></div>
+      <div class="pr"><h4>Каталоги за контакт</h4><p>PDF-каталоги коллекций: листать можно сразу, скачать полностью — после оставленного контакта (генерация лидов).</p></div>
+      <div class="pr"><h4>Защита от спама</h4><p>Формы защищены от ботов и автозаявок — менеджеры получают только реальные обращения.</p></div>
+      <div class="pr"><h4>Карта и шоурумы</h4><p>Интерактивная карта с тремя точками — клиент сразу видит, где посмотреть мебель вживую.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">06 — Структура сайта</span>
+    <h2>Карта разделов</h2>
+    <p class="sub">Обновлённая структура на основе текущего сайта. <span class="tag">раздел</span> — навигация, <span class="tag lead">заявка</span> — точка обращения.</p>
+    <div class="tree">
+      <ul>
+        <li><span class="node">Главная</span> <span class="tag lead">заявка</span></li>
+        <li><span class="node">Коллекции</span> — витрина линеек мебели
+          <ul><li><span class="leaf">Страница коллекции (REEF, BRIZ, GRID, …)</span> <span class="tag lead">заявка</span></li></ul>
+        </li>
+        <li><span class="node">Каталог</span>
+          <ul>
+            <li><span class="leaf">INTERIOR — мебель для интерьера</span></li>
+            <li><span class="leaf">OUTDOOR — уличная мебель</span></li>
+            <li><span class="leaf">Аксессуары</span></li>
+            <li><span class="leaf">Свет</span></li>
+            <li><span class="leaf">Карточка товара</span> <span class="tag lead">заявка</span></li>
+          </ul>
+        </li>
+        <li><span class="node">Каталоги PDF</span> — лукбуки коллекций <span class="tag lead">заявка</span></li>
+        <li><span class="node">О компании</span> — история, оригинальность бренда</li>
+        <li><span class="node">Производство</span> — цеха, процесс <span class="tag lead">заявка</span></li>
+        <li><span class="node">Контакты</span> — 3 шоурума, карта <span class="tag lead">заявка</span></li>
+        <li><span class="node">Доставка и оплата</span> <span class="tag lead">заявка</span></li>
+        <li><span class="node">Блог / Новости</span></li>
+        <li><span class="node">Вопросы и ответы</span></li>
+      </ul>
+    </div>
+    <div class="note">Документ-черновик дизайн-системы. Финализируется параллельно с вёрсткой ключевых страниц. Цвета, шрифты и компоненты взяты из фирменного стиля действующего сайта.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>YACHTLINE</b>
+    <p style="margin-top:12px">Дизайн-система обновлённого сайта · черновик v0.1</p>
+  </div>
+</footer>
+
+</body>
+</html>
